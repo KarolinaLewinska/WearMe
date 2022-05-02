@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using WearMe.Models;
-using WearMe.Services;
-using Xamarin.Forms;
 
 namespace WearMe.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy
@@ -20,7 +16,7 @@ namespace WearMe.ViewModels
         }
 
         string title = string.Empty;
-        public string Title
+        public string PageTitle
         {
             get { return title; }
             set { SetProperty(ref title, value); }

@@ -1,60 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WearMe.Models;
 
 namespace WearMe.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore
     {
-        readonly List<Item> items;
+         List<Advert> adverts;
 
         public MockDataStore()
         {
-            items = new List<Item>()
+            adverts = new List<Advert>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Advert { AdvertId = 1, Title = "Koszulka", Description="Fajna koszulka",
+                    Brand = "Zara", Category = "Spodnie", Condition = "Bardzo dobry", Gender = "Kobieta", Photo="i", Price=23.99m}
             };
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<bool> AddAdvertAsync(Advert advert)
         {
-            items.Add(item);
+            adverts.Add(advert);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<bool> UpdateAdvertAsync(Advert advert)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(item);
+            var oldAdvert = adverts.Where((Advert adv) => adv.AdvertId == advert.AdvertId).FirstOrDefault();
+            adverts.Remove(oldAdvert);
+            adverts.Add(advert);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteAdvertAsync(int id)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
-            items.Remove(oldItem);
+            var oldAdvert = adverts.Where((Advert adv) => adv.AdvertId == id).FirstOrDefault();
+            adverts.Remove(oldAdvert);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<Advert> GetAdvertAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(adverts.FirstOrDefault(adv => adv.AdvertId == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Advert>> GetAdvertsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(items);
+            return await Task.FromResult(adverts);
         }
     }
 }

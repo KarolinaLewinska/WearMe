@@ -8,14 +8,14 @@ using Xamarin.Forms.Xaml;
 
 namespace WearMe.Views
 {
-    public partial class NewItemPage : ContentPage
+    public partial class NewAdvertPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Advert Advert { get; set; }
 
-        public NewItemPage()
+        public NewAdvertPage()
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewAdvertViewModel();
         }
     }
 }

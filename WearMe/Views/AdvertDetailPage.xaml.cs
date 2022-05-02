@@ -4,12 +4,12 @@ using Xamarin.Forms;
 
 namespace WearMe.Views
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class AdvertDetailPage : ContentPage
     {
-        public ItemDetailPage()
+        public AdvertDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ItemDetailViewModel();
+            BindingContext = new AdvertDetailViewModel();
         }
     }
 }

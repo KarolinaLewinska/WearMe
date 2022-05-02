@@ -12,15 +12,15 @@ using Xamarin.Forms.Xaml;
 
 namespace WearMe.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class AdvertsListPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        AdvertsListViewModel _viewModel;
 
-        public ItemsPage()
+        public AdvertsListPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new AdvertsListViewModel();
         }
 
         protected override void OnAppearing()

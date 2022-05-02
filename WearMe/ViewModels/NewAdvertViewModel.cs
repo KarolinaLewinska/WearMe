@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
 using WearMe.Models;
+using WearMe.Services;
 using Xamarin.Forms;
 
 namespace WearMe.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewAdvertViewModel : BaseViewModel
     {
-        private string text;
+        private string title;
         private string description;
 
-        public NewItemViewModel()
+        public NewAdvertViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
@@ -22,14 +20,14 @@ namespace WearMe.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
+            return !String.IsNullOrWhiteSpace(title)
                 && !String.IsNullOrWhiteSpace(description);
         }
 
-        public string Text
+        public string Title
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => title;
+            set => SetProperty(ref title, value);
         }
 
         public string Description
@@ -49,14 +47,14 @@ namespace WearMe.ViewModels
 
         private async void OnSave()
         {
-            Item newItem = new Item()
+            MockDataStore mock = new MockDataStore();
+            Advert newAdvert = new Advert()
             {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
+                Title = Title,
                 Description = Description
             };
 
-            await DataStore.AddItemAsync(newItem);
+            await mock.AddAdvertAsync(newAdvert);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
