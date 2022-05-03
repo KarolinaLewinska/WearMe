@@ -14,7 +14,9 @@ namespace WearMe.Services
             adverts = new List<Advert>()
             {
                 new Advert { AdvertId = 1, Title = "Koszulka", Description="Fajna koszulka",
-                    Brand = "Zara", Category = "Spodnie", Condition = "Bardzo dobry", Gender = "Kobieta", Photo="i", Price=23.99m}
+                    Brand = "Zara", Category = "Spodnie", Condition = "Bardzo dobry", Gender = "Kobieta", 
+                    Photo="image", Price=23.99m, NameAndSurname="Jan Kowalski", City="Gdańsk", 
+                    Email="jankowalski2@wp.pl", PhoneNumber="509698454"}
             };
         }
 

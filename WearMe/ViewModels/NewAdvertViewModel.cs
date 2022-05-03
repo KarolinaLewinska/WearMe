@@ -42,7 +42,7 @@ namespace WearMe.ViewModels
         private async void OnCancel()
         {
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("//AdvertsListPage");
         }
 
         private async void OnSave()
@@ -57,7 +57,7 @@ namespace WearMe.ViewModels
             await mock.AddAdvertAsync(newAdvert);
 
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("//AdvertsListPage");
         }
     }
 }

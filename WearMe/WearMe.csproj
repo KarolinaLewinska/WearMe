@@ -6,11 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\wearmelogo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Images\wearmelogo.png" />
+    <EmbeddedResource Include="images\wearmelogo.png" />
   </ItemGroup>
 
   <ItemGroup>

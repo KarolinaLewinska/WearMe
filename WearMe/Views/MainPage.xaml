@@ -8,33 +8,25 @@
     <ContentPage.BindingContext>
         <vm:MainPageViewModel />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Accent">#96d1ff</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-     
-        <ScrollView Grid.Row="2">
-            <StackLayout Orientation="Vertical" Padding="90,24,30,24" Spacing="10">
-                <Label Text="Witamy w Wear Me" FontSize="Title"/>
-                <Label Text="Miejscu, w którym twoje ubrania mogą odmienić czyjeś życie!" FontSize="16" Padding="0,0,0,0"/>
-            </StackLayout>
-        </ScrollView>
-        <StackLayout Grid.Row="3" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Button VerticalOptions="Center" Text="Zaczynamy" Command="{Binding StartAppCommand}"/>
+                    <Image Source="wearmelogo.png" VerticalOptions="Center" HeightRequest="200"/>
                 </ContentView>
             </StackLayout>
         </StackLayout>
-
+        <StackLayout Grid.Row="1" Orientation="Vertical" Padding="85,60,30,0" Spacing="2">
+            <Label Text="Witamy w WearMe!" Padding="10,0,0,50" FontSize="Title" TextColor="Black"/>
+            <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie!" FontSize="17" Padding="0,0,0,200" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,20,0,40" VerticalOptions="FillAndExpand">
+                    <Button WidthRequest="250" VerticalOptions="Center" Text="Zaczynamy" Command="{Binding StartAppCommand}"/>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
     </Grid>
-
 </ContentPage>

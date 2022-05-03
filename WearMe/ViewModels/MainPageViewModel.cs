@@ -7,8 +7,7 @@ namespace WearMe.ViewModels
     public class MainPageViewModel: BaseViewModel
     {
         public Command StartAppCommand { get; }
-        public string Source { get; set; }
-      
+   
         public MainPageViewModel()
         {
             PageTitle = "Witamy w WearMe";

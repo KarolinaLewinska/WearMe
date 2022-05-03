@@ -79,7 +79,6 @@ namespace WearMe.ViewModels
             if (advert == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(AdvertDetailPage)}?{nameof(AdvertDetailViewModel.AdvertId)}={advert.AdvertId}");
         }
     }

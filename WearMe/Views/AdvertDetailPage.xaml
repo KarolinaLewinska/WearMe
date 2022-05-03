@@ -3,12 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.AdvertDetailPage"
              Title="{Binding PageTitle}">
-
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Title}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
-    </StackLayout>
     
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15" HorizontalOptions="CenterAndExpand">
+            <Label Text="Informacje o produkcie" FontSize="21" TextColor="Black"/>
+            <Label Text="{Binding Title}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Description}" FontSize="16" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Photo}" FontSize="16" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Price}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Brand}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Category}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Gender}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Condition}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Informacje o właścicielu" FontSize="21" HorizontalOptions="CenterAndExpand" TextColor="Black"/>
+            <Label Text="{Binding NameAndSurname}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding PhoneNumber}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Email}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding City}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
