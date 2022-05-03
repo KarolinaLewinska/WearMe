@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using WearMe.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WearMe.Views
 {
@@ -10,6 +8,7 @@ namespace WearMe.Views
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = new MainPageViewModel();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WearMe.Models
+﻿namespace WearMe.Models
 {
     public class Author
     {

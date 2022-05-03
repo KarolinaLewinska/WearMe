@@ -20,19 +20,21 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
+     
+        <ScrollView Grid.Row="2">
             <StackLayout Orientation="Vertical" Padding="90,24,30,24" Spacing="10">
                 <Label Text="Witamy w Wear Me" FontSize="Title"/>
                 <Label Text="Miejscu, w którym twoje ubrania mogą odmienić czyjeś życie!" FontSize="16" Padding="0,0,0,0"/>
             </StackLayout>
         </ScrollView>
+        <StackLayout Grid.Row="3" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Button VerticalOptions="Center" Text="Zaczynamy" Command="{Binding StartAppCommand}"/>
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+
     </Grid>
 
 </ContentPage>
