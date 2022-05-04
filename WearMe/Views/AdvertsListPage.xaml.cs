@@ -1,23 +1,39 @@
-﻿using WearMe.ViewModels;
+﻿using WearMe.Models;
 using Xamarin.Forms;
 
 namespace WearMe.Views
 {
     public partial class AdvertsListPage : ContentPage
     {
-        AdvertsListViewModel _viewModel;
-
         public AdvertsListPage()
         {
             InitializeComponent();
-
-            BindingContext = _viewModel = new AdvertsListViewModel();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
+            var adverts = await App.DB.getAdvertsList();
+
+            BindingContext = adverts;
             base.OnAppearing();
-            _viewModel.OnAppearing();
+        }
+
+        private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new NewAdvertPage()
+            {
+                BindingContext = new Advert() { }
+            });
+        }
+
+        private async void Adverts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var advert = (Advert)e.SelectedItem;
+            await Navigation.PushAsync(new AdvertDetailPage()
+            {
+                BindingContext = advert
+            });
+
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
-using WearMe.Services;
-using WearMe.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using WearMe.Database;
+using System.IO;
 
 namespace WearMe
 {
@@ -17,7 +15,8 @@ namespace WearMe
             {
                 if (db == null)
                 {
-                    db = new AdvertsDatabase();
+                    db = new AdvertsDatabase(Path.Combine(Environment.GetFolderPath
+                        (Environment.SpecialFolder.LocalApplicationData), "AdvertsDB.db3"));
                 }
                 return db;
             }
@@ -27,7 +26,7 @@ namespace WearMe
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            /*DependencyService.Register<MockDataStore>();*/
             MainPage = new AppShell();
         }
 

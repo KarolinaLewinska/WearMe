@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using WearMe.ViewModels;
+using WearMe.Models;
 using WearMe.Views;
 using Xamarin.Forms;
 
@@ -15,9 +14,17 @@ namespace WearMe
             Routing.RegisterRoute(nameof(NewAdvertPage), typeof(NewAdvertPage));
         }
 
-        private async void OnMenuItemClicked(object sender, EventArgs e)
+        private async void OnMenuLeaveItem_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//MainPage");
+        }
+
+        private async void MenuAddItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewAdvertPage()
+            {
+                BindingContext = new Advert() { }
+            });
         }
     }
 }

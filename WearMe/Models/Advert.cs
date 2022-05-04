@@ -1,7 +1,9 @@
-﻿namespace WearMe.Models
+﻿using SQLite;
+namespace WearMe.Models
 {
     public class Advert
     {
+        [PrimaryKey, AutoIncrement]
         public int AdvertId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -77,13 +77,11 @@
     <FlyoutItem Title="Ubrania">
         <ShellContent Route="AdvertsListPage" ContentTemplate="{DataTemplate local:AdvertsListPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Dodaj ogłoszenie">
-        <ShellContent Route="NewAdvertPage" ContentTemplate="{DataTemplate local:NewAdvertPage}" />
-    </FlyoutItem>
- 
+    <MenuItem Text="Dodaj ogłoszenie" StyleClass="MenuItemLayoutStyle" Clicked="MenuAddItem_Clicked">
+    </MenuItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Wyjście" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Wyjście" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuLeaveItem_Clicked">
     </MenuItem>
 
     <!--

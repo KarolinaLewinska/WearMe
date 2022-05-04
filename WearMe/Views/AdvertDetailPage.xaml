@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.AdvertDetailPage"
-             Title="{Binding PageTitle}">
+             Title="Szczegóły ogłoszenia">
     
     <ScrollView>
         <StackLayout Spacing="20" Padding="15" HorizontalOptions="CenterAndExpand">

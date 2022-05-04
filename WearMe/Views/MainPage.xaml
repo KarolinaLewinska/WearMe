@@ -2,13 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.MainPage"
-             xmlns:vm="clr-namespace:WearMe.ViewModels"
-             Title="{Binding Title}">
+             Title="WearMe">
     
-    <ContentPage.BindingContext>
-        <vm:MainPageViewModel />
-    </ContentPage.BindingContext>
-
     <Grid>
         <StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
@@ -18,13 +13,13 @@
             </StackLayout>
         </StackLayout>
         <StackLayout Grid.Row="1" Orientation="Vertical" Padding="85,60,30,0" Spacing="2">
-            <Label Text="Witamy w WearMe!" Padding="10,0,0,50" FontSize="Title" TextColor="Black"/>
+            <Label Text="Witamy w WearMe!" Padding="10,0,0,50" FontSize="20" TextColor="Black"/>
             <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie!" FontSize="17" Padding="0,0,0,200" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
         </StackLayout>
         <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,20,0,40" VerticalOptions="FillAndExpand">
-                    <Button WidthRequest="250" VerticalOptions="Center" Text="Zaczynamy" Command="{Binding StartAppCommand}"/>
+                    <Button WidthRequest="250" VerticalOptions="Center" Text="Zaczynamy" Clicked="StartApp_Clicked"/>
                 </ContentView>
             </StackLayout>
         </StackLayout>
