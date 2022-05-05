@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using WearMe.Models;
 using Xamarin.Forms;
 
@@ -12,7 +11,6 @@ namespace WearMe.ViewModels
     {
         private Advert advert;
         public INavigation Navigation { get; set; }
-
 
         public Advert Advert
         {
@@ -34,6 +32,7 @@ namespace WearMe.ViewModels
             {
                 return false;
             }
+
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);

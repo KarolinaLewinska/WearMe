@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using WearMe.Models;
 
@@ -11,8 +9,6 @@ namespace WearMe.Services
         Task<IEnumerable<Advert>> GetAdverts();
         Task<Advert> GetAdvert(int id);
         Task<bool> AddAdvert(Advert advert);
-        Task<bool> DeleteAdvert(int id);
-        
-        
+        Task<bool> DeleteAdvert(int id); 
     }
 }

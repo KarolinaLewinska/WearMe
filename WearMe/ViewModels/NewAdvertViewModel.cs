@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WearMe.Models;
+﻿using WearMe.Models;
 using Xamarin.Forms;
 
 namespace WearMe.ViewModels
@@ -13,18 +10,17 @@ namespace WearMe.ViewModels
 
         public NewAdvertViewModel()
         {
-            SaveAdvertCommand = new Command(OnSaveAdvert);
-            CancelCommand = new Command(OnCancel);
             this.PropertyChanged += (_, __) => SaveAdvertCommand.ChangeCanExecute();
             Advert = new Advert();
-        }
 
+            SaveAdvertCommand = new Command(OnSaveAdvert);
+            CancelCommand = new Command(OnCancel);
+        }
 
         private async void OnSaveAdvert()
         {
             var advert = Advert;
             await App.AdvertService.AddAdvert(advert);
-
             await Shell.Current.GoToAsync("..");
         }
 

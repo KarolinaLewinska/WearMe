@@ -1,4 +1,5 @@
 ﻿using SQLite;
+
 namespace WearMe.Models
 {
     public class Advert

@@ -9,7 +9,6 @@ namespace WearMe.Views
         public AdvertDetailPage()
         {
             InitializeComponent();
-            //BindingContext = new AdvertDetailViewModel();
         }
 
         public int AdvertId

@@ -18,11 +18,9 @@
                 <Label Text="Opis produktu" FontSize="Medium"/>
                 <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges"  FontSize="Medium" Margin="0"/>
                 <StackLayout Orientation="Horizontal" Padding="80,10,10,0">
-                    <Button Text="Dodaj zdjęcie" HeightRequest="40" WidthRequest="200"></Button>
+                    <Button Text="Dodaj zdjęcie" HeightRequest="40" WidthRequest="200"/>
                 </StackLayout>
-
                 <Entry Text="{Binding Advert.Photo, Mode=TwoWay}" FontSize="Medium"/>
-
                 <Label Text="Cena" FontSize="Medium"/>
                 <Entry Text="{Binding Advert.Price, Mode=TwoWay}" FontSize="Medium"/>
                 <Label Text="Marka" FontSize="Medium" />

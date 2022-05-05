@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using WearMe.Database;
 using System.IO;
 using WearMe.Services;
 
@@ -26,8 +25,6 @@ namespace WearMe
         public App()
         {
             InitializeComponent();
-
-            /*DependencyService.Register<MockDataStore>();*/
             MainPage = new AppShell();
         }
 

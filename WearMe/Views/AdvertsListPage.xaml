@@ -9,37 +9,28 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Command="{Binding AddAdvertCommand}"/>
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout>
             <RefreshView x:DataType="local:AdvertViewModel" Command="{Binding LoadAdvertsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
-                <CollectionView SelectionMode="Single"
-                SelectionChanged="OnCollectionViewSelectionChanged" ItemsSource="{Binding Adverts}" >
+                <CollectionView SelectionMode="Single" SelectionChanged="Adverts_SelectionChanged" ItemsSource="{Binding Adverts}" >
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate >
                             <StackLayout x:DataType="model:Advert">
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems>
-                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=DeleteCommandTabbed}" CommandParameter="{Binding .}"/>
-                                            <SwipeItem IsDestructive ="True" Text="Close" BackgroundColor="Green"/>
-
+                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=DeleteAdvertCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Edit" BackgroundColor="Green" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=EditAdvertCommand}" CommandParameter="{Binding .}"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
-                               
                                     <Grid Padding="3">
                                         <Frame CornerRadius="10" HasShadow="True">
                                             <StackLayout Orientation="Horizontal">
-                                                <Image Grid.RowSpan="2" Source="wearmelogo.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100"></Image>
+                                                <Image Grid.RowSpan="2" Source="wearmelogo.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100"/>
                                                 <StackLayout>
                                                     <Label Grid.Column="1" Text="{Binding Title}" FontSize="15" TextColor="black" FontAttributes="Bold"/>
                                                     <Label Grid.Column="1" Grid.Row="1" Text="{Binding Category}" FontSize="15" VerticalOptions="End"/>
-                                                </StackLayout>
-                                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                                    <Image Source="edit.png" Grid.Column="3" WidthRequest="30" HeightRequest="30" VerticalOptions="End">
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=EditCommandTabbed}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>
@@ -51,6 +42,5 @@
                 </CollectionView>
             </RefreshView>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using WearMe.Models;
 using WearMe.Views;
@@ -11,23 +9,21 @@ namespace WearMe.ViewModels
 {
     public class AdvertViewModel: BaseAdvertViewModel
     {
-        public Command LoadAdvertsCommand { get; }
         public ObservableCollection<Advert> Adverts { get; }
-
+        public Command LoadAdvertsCommand { get; }
         public Command AddAdvertCommand { get; }
-        public Command EditCommandTabbed { get; }
-        public Command DeleteCommandTabbed { get; }
-
-
+        public Command EditAdvertCommand { get; }
+        public Command DeleteAdvertCommand { get; }
 
         public AdvertViewModel(INavigation navigation)
         {
-            LoadAdvertsCommand = new Command(async() => await ExecuteLoadAdvertCommand());
             Adverts = new ObservableCollection<Advert>();
-            AddAdvertCommand = new Command(OnAddAdvert);
-            EditCommandTabbed = new Command<Advert>(OnEditAdvert);
-            DeleteCommandTabbed = new Command<Advert>(OnDeleteAdvert);
             Navigation = navigation;
+            
+            LoadAdvertsCommand = new Command(async() => await ExecuteLoadAdvertCommand());
+            AddAdvertCommand = new Command(OnAddAdvert);
+            EditAdvertCommand = new Command<Advert>(OnEditAdvert);
+            DeleteAdvertCommand = new Command<Advert>(OnDeleteAdvert);
         }
         public void OnAppearing()
         {

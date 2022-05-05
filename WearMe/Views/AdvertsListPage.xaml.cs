@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using WearMe.Models;
 using WearMe.ViewModels;
 using Xamarin.Forms;
@@ -20,29 +19,17 @@ namespace WearMe.Views
 
         protected override void OnAppearing()
         {
-           
             base.OnAppearing();
             advertViewModel.OnAppearing();
-
         }
 
-      /*  private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        private async void Adverts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Navigation.PushAsync(new NewAdvertPage()
-            {
-                BindingContext = new Advert() { }
-            });
-        }*/
-
-    /*    private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-          
-            var current = (e.CurrentSelection.FirstOrDefault() as Advert)?.AdvertId;
+            var selectedAdvert = e.CurrentSelection.FirstOrDefault() as Advert;
             await Navigation.PushAsync(new AdvertDetailPage()
             {
-                BindingContext = current
+                BindingContext = selectedAdvert
             });
-
-        }*/
+        }
     }
 }
