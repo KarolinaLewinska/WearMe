@@ -1,5 +1,4 @@
 ﻿using System;
-using WearMe.Models;
 using WearMe.Views;
 using Xamarin.Forms;
 
@@ -21,10 +20,7 @@ namespace WearMe
 
         private async void MenuAddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewAdvertPage()
-            {
-                BindingContext = new Advert() { }
-            });
+            await Shell.Current.GoToAsync(nameof(NewAdvertPage));
         }
     }
 }

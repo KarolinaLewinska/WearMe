@@ -20,7 +20,6 @@ namespace WearMe.Views
             set
             {
                 advertId = value;
-               
             }
         }
     }

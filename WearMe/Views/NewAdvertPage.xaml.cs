@@ -40,9 +40,4 @@ namespace WearMe.Views
         }
 
     }
-    class AdvertAction
-    {
-        public string Action { get; set; }
-        public Advert Advert { get; set; }
-    }
 }

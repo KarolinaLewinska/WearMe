@@ -15,15 +15,16 @@ namespace WearMe.ViewModels
         public Command EditAdvertCommand { get; }
         public Command DeleteAdvertCommand { get; }
 
+
+
         public AdvertViewModel(INavigation navigation)
         {
             Adverts = new ObservableCollection<Advert>();
-            Navigation = navigation;
-            
             LoadAdvertsCommand = new Command(async() => await ExecuteLoadAdvertCommand());
             AddAdvertCommand = new Command(OnAddAdvert);
             EditAdvertCommand = new Command<Advert>(OnEditAdvert);
             DeleteAdvertCommand = new Command<Advert>(OnDeleteAdvert);
+            Navigation = navigation;
         }
         public void OnAppearing()
         {

@@ -9,8 +9,11 @@ namespace WearMe.ViewModels
 {
     public class BaseAdvertViewModel: INotifyPropertyChanged
     {
-        private Advert advert;
         public INavigation Navigation { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Advert advert;
+        private bool isBusy = false;
 
         public Advert Advert
         {
@@ -18,12 +21,10 @@ namespace WearMe.ViewModels
             set { advert = value; OnPropertyChanged(); }
         }
 
-        bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
-
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
@@ -38,8 +39,6 @@ namespace WearMe.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
         
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

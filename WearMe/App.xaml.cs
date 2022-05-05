@@ -15,8 +15,7 @@ namespace WearMe
             {
                 if (advertService == null)
                 {
-                    advertService = new AdvertService(Path.Combine(Environment.GetFolderPath
-                        (Environment.SpecialFolder.LocalApplicationData), "AdvertsDB.db3"));
+                    advertService = new AdvertService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AdvertsDB.db3"));
                 }
                 return advertService;
             }

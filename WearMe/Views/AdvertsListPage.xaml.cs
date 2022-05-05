@@ -9,7 +9,7 @@ namespace WearMe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdvertsListPage : ContentPage
     {
-        AdvertViewModel advertViewModel;
+        private AdvertViewModel advertViewModel;
         
         public AdvertsListPage()
         {

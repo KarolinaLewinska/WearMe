@@ -13,9 +13,9 @@
     <ContentPage.Content>
         <StackLayout>
             <RefreshView x:DataType="local:AdvertViewModel" Command="{Binding LoadAdvertsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
-                <CollectionView SelectionMode="Single" SelectionChanged="Adverts_SelectionChanged" ItemsSource="{Binding Adverts}" >
+                <CollectionView SelectionMode="Single" ItemsSource="{Binding Adverts}" SelectionChanged="Adverts_SelectionChanged">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate >
+                        <DataTemplate>
                             <StackLayout x:DataType="model:Advert">
                                 <SwipeView>
                                     <SwipeView.RightItems>
