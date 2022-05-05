@@ -2,23 +2,24 @@
 using Xamarin.Forms;
 using WearMe.Database;
 using System.IO;
+using WearMe.Services;
 
 namespace WearMe
 {
     public partial class App : Application
     {
-        static AdvertsDatabase db;
+        static AdvertService advertService;
 
-        internal static AdvertsDatabase DB
+        public static AdvertService AdvertService
         {
             get
             {
-                if (db == null)
+                if (advertService == null)
                 {
-                    db = new AdvertsDatabase(Path.Combine(Environment.GetFolderPath
+                    advertService = new AdvertService(Path.Combine(Environment.GetFolderPath
                         (Environment.SpecialFolder.LocalApplicationData), "AdvertsDB.db3"));
                 }
-                return db;
+                return advertService;
             }
         }
 

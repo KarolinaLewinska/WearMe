@@ -2,28 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.NewAdvertPage"
+             xmlns:local="clr-namespace:WearMe.ViewModels"
              Shell.PresentationMode="ModalAnimated"
              Title="{Binding Action}">
 
+    <ContentPage.BindingContext>
+        <local:NewAdvertViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="3" Padding="15">
                 <Label Text="Informacje o produkcie" FontSize="21" HorizontalOptions="Center" Margin="0,5,0,15" TextColor="Black"/>
                 <Label Text="Tytuł ogłoszenia" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.Title }" FontSize="Medium"/>
+                <Entry Text="{Binding Advert.Title, Mode=TwoWay}" FontSize="Medium"/>
                 <Label Text="Opis produktu" FontSize="Medium"/>
-                <Editor Text="{Binding Advert.Description }"  FontSize="Medium" Margin="0"/>
+                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges"  FontSize="Medium" Margin="0"/>
                 <StackLayout Orientation="Horizontal" Padding="80,10,10,0">
                     <Button Text="Dodaj zdjęcie" HeightRequest="40" WidthRequest="200"></Button>
                 </StackLayout>
-                
-                <Entry Text="{Binding Advert.Photo }" FontSize="Medium"/>
+
+                <Entry Text="{Binding Advert.Photo, Mode=TwoWay}" FontSize="Medium"/>
 
                 <Label Text="Cena" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.Price }" FontSize="Medium"/>
+                <Entry Text="{Binding Advert.Price, Mode=TwoWay}" FontSize="Medium"/>
                 <Label Text="Marka" FontSize="Medium" />
-                <Entry Text="{Binding Advert.Brand }" FontSize="Medium"/>
-                <Picker SelectedItem="{Binding Advert.Category}" Title="Wybierz kategorię" Margin="0,20,0,10">
+                <Entry Text="{Binding Advert.Brand, Mode=TwoWay}" FontSize="Medium"/>
+                <Picker SelectedItem="{Binding Advert.Category, Mode=TwoWay}" Title="Wybierz kategorię" Margin="0,20,0,10">
                     <Picker.Items>
                         <x:String>Kurtki i płaszcze</x:String>
                         <x:String>Bluzy i swetry</x:String>
@@ -39,14 +43,14 @@
                         <x:String>Inne torebki</x:String>
                     </Picker.Items>
                 </Picker>
-                <Picker SelectedItem="{Binding Advert.Gender}" Title="Wybierz płeć" Margin="0,0,0,10">
+                <Picker SelectedItem="{Binding Advert.Gender, Mode=TwoWay}" Title="Wybierz płeć" Margin="0,0,0,10">
                     <Picker.Items>
                         <x:String>Dla kobiet</x:String>
                         <x:String>Dla mężczyzn</x:String>
                         <x:String>Dla obu płci</x:String>
                     </Picker.Items>
                 </Picker>
-                <Picker SelectedItem="{Binding Advert.Condition}" Title="Określ stan produktu" Margin="0,0,0,20">
+                <Picker SelectedItem="{Binding Advert.Condition, Mode=TwoWay}" Title="Określ stan produktu" Margin="0,0,0,20">
                     <Picker.Items>
                         <x:String>Nowy przedmiot z metką</x:String>
                         <x:String>Nowy przedmiot bez metki</x:String>
@@ -64,8 +68,8 @@
                 <Label Text="Miasto" FontSize="Medium"/>
                 <Entry Text="{Binding Advert.City, Mode=TwoWay}" FontSize="Medium" Margin="0,0,0,10"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Anuluj" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
-                    <Button Text="{Binding Action}" Clicked="Add_Advert_Clicked" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Zapisz" Command="{Binding SaveAdvertCommand}" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

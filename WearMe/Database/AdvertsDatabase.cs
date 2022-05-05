@@ -36,5 +36,10 @@ namespace WearMe.Database
                 return conn.UpdateAsync(advert);
             }
         }
+
+       /* public  Task<Advert> deleteAdvert(int id)
+        {
+            return conn.DeleteAsync<Advert>(id);
+        }*/
     }
 }
