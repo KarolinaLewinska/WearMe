@@ -2,9 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.App">
-    <!--
-        Define global resources and styles here, that apply to all pages in your app.
-    -->
+    
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#191970</Color>
@@ -15,17 +13,63 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                            <VisualState x:Name="Disabled">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
+            </Style>
+            <Style x:Key="HeaderTextStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#3b444b"/>
+                <Setter Property="Margin" Value="0,10,0,0"/>
+                <Setter Property="FontSize" Value="22"/>
+            </Style>
+            <Style x:Key="LabelTextStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="EntryTextStyle" TargetType="Entry" ApplyToDerivedTypes="True">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+            <Style x:Key="ExtraInfoListStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="DetailsTextStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="#404040"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            <Style x:Key="DetailsLabelStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="#404040"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="VerticalLineStyle" TargetType="BoxView" ApplyToDerivedTypes="True">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="Color" Value="DarkBlue"/>
+            </Style>
+            <Style x:Key="DescriptionLabelStyle" TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="10,10,10,0"/>
+                <Setter Property="BackgroundColor" Value="#D7E5F0"/>
+            </Style>
+            <Style x:Key="MainPageStackLayoutStyle" TargetType="StackLayout" ApplyToDerivedTypes="True">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

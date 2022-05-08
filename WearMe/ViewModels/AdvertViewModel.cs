@@ -15,8 +15,6 @@ namespace WearMe.ViewModels
         public Command EditAdvertCommand { get; }
         public Command DeleteAdvertCommand { get; }
 
-
-
         public AdvertViewModel(INavigation navigation)
         {
             Adverts = new ObservableCollection<Advert>();
@@ -71,8 +69,13 @@ namespace WearMe.ViewModels
             {
                 return;
             }
-            await App.AdvertService.DeleteAdvert(advert.AdvertId);
-            await ExecuteLoadAdvertCommand();
+
+            var wantsToDelete = await App.Current.MainPage.DisplayAlert("Usuń produkt", "Czy na pewno chcesz usunąć wybrany produkt?", "Tak", "Nie");
+            if (wantsToDelete)
+            {
+                await App.AdvertService.DeleteAdvert(advert.AdvertId);
+                await ExecuteLoadAdvertCommand();
+            }
         }
     }
 }

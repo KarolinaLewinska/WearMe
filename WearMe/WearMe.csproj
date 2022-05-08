@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\add.png" />
     <None Remove="images\delete.png" />
     <None Remove="images\edit.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="images\add.png" />
     <EmbeddedResource Include="images\delete.png" />
     <EmbeddedResource Include="images\edit.png" />
     <EmbeddedResource Include="images\wearmelogo.png" />

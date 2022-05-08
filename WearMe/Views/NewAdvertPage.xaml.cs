@@ -9,7 +9,7 @@ namespace WearMe.Views
     public partial class NewAdvertPage : ContentPage
     {
         public Advert Advert { get; set; }
-
+        public string PageTitle { get; set; }
         public NewAdvertPage()
         {
             InitializeComponent();
@@ -20,7 +20,6 @@ namespace WearMe.Views
         {
             InitializeComponent();
             BindingContext = new NewAdvertViewModel();
-
             if (advert != null)
             {
                 ((NewAdvertViewModel)BindingContext).Advert = advert;
@@ -31,13 +30,7 @@ namespace WearMe.Views
         {
             base.OnAppearing();
         }
-
-        private bool ValidateSave()
-        {
-  /*          return !String.IsNullOrWhiteSpace(advert)
-                && !String.IsNullOrWhiteSpace(description);*/
-            return true;
-        }
-
+      
+       
     }
 }

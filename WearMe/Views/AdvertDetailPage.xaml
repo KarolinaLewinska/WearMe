@@ -2,24 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.AdvertDetailPage"
-             Title="Szczegóły ogłoszenia">
+             Title="Szczegóły ogłoszenia"
+             Shell.PresentationMode="Animated">
     
     <ScrollView>
         <StackLayout Spacing="20" Padding="15" HorizontalOptions="CenterAndExpand">
-            <Label Text="Informacje o produkcie" FontSize="21" TextColor="Black"/>
-            <Label Text="{Binding Title}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Description}" FontSize="16" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Photo}" FontSize="16" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Price}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Brand}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Category}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Gender}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Condition}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="Informacje o właścicielu" FontSize="21" HorizontalOptions="CenterAndExpand" TextColor="Black"/>
-            <Label Text="{Binding NameAndSurname}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding PhoneNumber}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Email}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding City}" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Title}" Style="{StaticResource HeaderTextStyle}"/>
+            <StackLayout Orientation="Vertical">
+                <BoxView Style="{StaticResource VerticalLineStyle}"/>
+            </StackLayout>
+            <Label Text="{Binding Description}" Style="{StaticResource DescriptionLabelStyle}"/>
+            <Image Source="{Binding Photo}" Aspect="Fill" HeightRequest="200" WidthRequest="250" HorizontalOptions="CenterAndExpand"/>
+            <Grid Padding="0,-40,100,0" HeightRequest="280">
+                <Label Grid.Row="1" Grid.Column="1" Text="Cena:" Style="{StaticResource DetailsLabelStyle}" Padding="-5,0,-130,0"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Price}" Style="{StaticResource DetailsTextStyle}" Padding="-40,0,-130,0"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="Rozmiar:" Style="{StaticResource DetailsLabelStyle}" Padding="-20,0,-130,10"/>
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding Size}" Style="{StaticResource DetailsTextStyle}" Padding="-30,0,-130,0"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="Marka:" Style="{StaticResource DetailsLabelStyle}" Padding="-20,0,-130,0"/>
+                <Label Grid.Row="3" Grid.Column="2" Text="{Binding Brand}" Style="{StaticResource DetailsTextStyle}" Padding="-40,0,-130,0"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="Kategoria:" Style="{StaticResource DetailsLabelStyle}" Padding="0,0,0,0"/>
+                <Label Grid.Row="4" Grid.Column="2" Text="{Binding Category}" Style="{StaticResource DetailsTextStyle}" Padding="-40,0,-130,0"/>
+                <Label Grid.Row="5" Grid.Column="1" Text="Przeznaczenie:" Style="{StaticResource DetailsLabelStyle}" Padding="-60,0,-130,0"/>
+                <Label Grid.Row="5" Grid.Column="2" Text="{Binding Gender}" Style="{StaticResource DetailsTextStyle}" Padding="-20,0,-130,0"/>
+                <Label Grid.Row="6" Grid.Column="1" Text="Stan:" Style="{StaticResource DetailsLabelStyle}" Padding="-20,0,20,0"/>
+                <Label Grid.Row="6" Grid.Column="2" Text="{Binding Condition}" Style="{StaticResource DetailsTextStyle}" Padding="-80,0,-70,0"/>
+            </Grid>
+            <Label Text="Informacje o właścicielu" Style="{StaticResource HeaderTextStyle}" Padding="0,0,0,0"/>
+            <StackLayout Orientation="Vertical">
+                <BoxView Style="{StaticResource VerticalLineStyle}"/>
+            </StackLayout>
+            <Grid Padding="0,-40,100,0" HeightRequest="200">
+                <Label Grid.Row="1" Grid.Column="1" Text="Imię i nazwisko:" Style="{StaticResource DetailsLabelStyle}" Padding="-55,-5,0,20"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding NameAndSurname}" Style="{StaticResource DetailsTextStyle}" Padding="-45,-5,-130,0"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="Telefon:" Style="{StaticResource DetailsLabelStyle}" Padding="-20,-6,0,-100"/>
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding PhoneNumber}" Style="{StaticResource DetailsTextStyle}" Padding="-40,-6,-25,0"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="Email:" Style="{StaticResource DetailsLabelStyle}" Padding="-90,-6,0,-100"/>
+                <Label Grid.Row="3" Grid.Column="2" Text="{Binding Email}" Style="{StaticResource DetailsTextStyle}" Padding="-120,-6,-130,0"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="Miasto:" Style="{StaticResource DetailsLabelStyle}" Padding="-30,-6,-150,0"/>
+                <Label Grid.Row="4" Grid.Column="2" Text="{Binding City}" Style="{StaticResource DetailsTextStyle}" Padding="-50,-6,-130,0"/>
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>

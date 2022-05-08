@@ -2,23 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.MainPage"
-             Title="WearMe">
+             Title="Wear Me"
+             Shell.PresentationMode="Animated">
     
     <Grid>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Style="{StaticResource MainPageStackLayoutStyle}">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                     <Image Source="wearmelogo.png" VerticalOptions="Center" HeightRequest="200"/>
                 </ContentView>
             </StackLayout>
         </StackLayout>
-        <StackLayout Grid.Row="1" Orientation="Vertical" Padding="85,60,30,0" Spacing="2">
-            <Label Text="Witamy w WearMe!" Padding="10,0,0,50" FontSize="20" TextColor="Black"/>
-            <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie!" FontSize="17" Padding="0,0,0,200" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+        <StackLayout Grid.Row="1" Style="{StaticResource MainPageStackLayoutStyle}" Padding="20,95,30,0">
+            <Label Text="Witamy w WearMe!" FontAttributes="Bold" Padding="10,0,0,10" FontSize="20" TextColor="Black"/>
         </StackLayout>
-        <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,20,0,40" VerticalOptions="FillAndExpand">
+        <StackLayout Grid.Row="2">
+            <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie! Z nami odmienisz swój styl!" LineHeight="1.2" FontSize="17" Padding="50,0,10,100" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Grid.Row="3">
+            <StackLayout Style="{StaticResource MainPageStackLayoutStyle}">
+                <ContentView VerticalOptions="FillAndExpand">
                     <Button WidthRequest="250" VerticalOptions="Center" Text="Zaczynamy" Clicked="StartApp_Clicked"/>
                 </ContentView>
             </StackLayout>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.NewAdvertPage"
              xmlns:local="clr-namespace:WearMe.ViewModels"
-             Shell.PresentationMode="ModalAnimated">
+             Shell.PresentationMode="Animated">
 
     <ContentPage.BindingContext>
         <local:NewAdvertViewModel/>
@@ -12,24 +12,27 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="3" Padding="15">
-                <Label Text="Informacje o produkcie" FontSize="21" HorizontalOptions="Center" Margin="0,5,0,15" TextColor="Black"/>
-                <Label Text="Tytuł ogłoszenia" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.Title, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Opis produktu" FontSize="Medium"/>
-                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
-                <StackLayout Orientation="Horizontal" Padding="80,10,10,0">
-                    <Button Text="Dodaj zdjęcie" HeightRequest="40" WidthRequest="200"/>
+                <Label Text="Informacje o produkcie"  Margin="0,5,0,15" Style="{StaticResource HeaderTextStyle}"/>
+                <Label Text="Tytuł" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.Title, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Label Text="Opis" Style="{StaticResource LabelTextStyle}"/>
+                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges" Style="{StaticResource EntryTextStyle}"/>
+                <StackLayout Orientation="Horizontal" Padding="30,10,90,10">
+                    <Button Text="Zrób zdjęcie" HeightRequest="40" WidthRequest="140" Command="{Binding TakePhoto}"/>
+                    <Button Text="Wybierz zdjęcie" HeightRequest="40" WidthRequest="160" Command="{Binding ChoosePhoto}"/>
                 </StackLayout>
-                <Entry Text="{Binding Advert.Photo, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Cena" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.Price, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Marka" FontSize="Medium" />
-                <Entry Text="{Binding Advert.Brand, Mode=TwoWay}" FontSize="Medium"/>
+                <Image Source="{Binding MediaPath, Mode=TwoWay}" HeightRequest="100"/>
+                <Label Text="Cena" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.Price, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Keyboard="Numeric"/>
+                <Label Text="Rozmiar" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.Size, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Label Text="Marka" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.Brand, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
                 <Picker SelectedItem="{Binding Advert.Category, Mode=TwoWay}" Title="Wybierz kategorię" Margin="0,20,0,10">
                     <Picker.Items>
                         <x:String>Kurtki i płaszcze</x:String>
                         <x:String>Bluzy i swetry</x:String>
-                        <x:String>Żakiety i garnitury</x:String>
+                        <x:String>Garnitury</x:String>
                         <x:String>Sukienki</x:String>
                         <x:String>Spódnice</x:String>
                         <x:String>Koszulki</x:String>
@@ -50,21 +53,21 @@
                 </Picker>
                 <Picker SelectedItem="{Binding Advert.Condition, Mode=TwoWay}" Title="Określ stan produktu" Margin="0,0,0,20">
                     <Picker.Items>
-                        <x:String>Nowy przedmiot z metką</x:String>
-                        <x:String>Nowy przedmiot bez metki</x:String>
+                        <x:String>Nowy z metką</x:String>
+                        <x:String>Nowy bez metki</x:String>
                         <x:String>Stan bardzo dobry</x:String>
                         <x:String>Stan dobry</x:String>
                     </Picker.Items>
                 </Picker>
-                <Label Text="Informacje o właścicielu" FontSize="21" HorizontalOptions="Center" Margin="0,5,0,15" TextColor="Black"/>
-                <Label Text="Imię i nazwisko" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.NameAndSurname, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Numer telefonu" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.PhoneNumber, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Adres email" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.Email, Mode=TwoWay}" FontSize="Medium"/>
-                <Label Text="Miasto" FontSize="Medium"/>
-                <Entry Text="{Binding Advert.City, Mode=TwoWay}" FontSize="Medium" Margin="0,0,0,10"/>
+                <Label Text="Dane kontaktowe sprzedawcy" Margin="0,5,0,25" Style="{StaticResource HeaderTextStyle}"/>
+                <Label Text="Imię i nazwisko" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.NameAndSurname, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Label Text="Numer telefonu" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.PhoneNumber, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Keyboard="Numeric"/>
+                <Label Text="Adres email" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.Email, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Label Text="Miasto" Style="{StaticResource LabelTextStyle}"/>
+                <Entry Text="{Binding Advert.City, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Margin="0,0,0,15"/>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
                     <Button Text="Zapisz" Command="{Binding SaveAdvertCommand}" HorizontalOptions="FillAndExpand"/>

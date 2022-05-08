@@ -9,7 +9,6 @@ namespace WearMe
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(AdvertDetailPage), typeof(AdvertDetailPage));
             Routing.RegisterRoute(nameof(NewAdvertPage), typeof(NewAdvertPage));
         }
 

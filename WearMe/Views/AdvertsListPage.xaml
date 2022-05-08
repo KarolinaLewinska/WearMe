@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.AdvertsListPage"
-             Title="Ogłoszenia"
+             Title="Dostępne przedmioty"
              xmlns:local="clr-namespace:WearMe.ViewModels"
              xmlns:model="clr-namespace:WearMe.Models">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Command="{Binding AddAdvertCommand}"/>
+        <ToolbarItem Icon="add.png" Command="{Binding AddAdvertCommand}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -20,17 +20,22 @@
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems>
-                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=DeleteAdvertCommand}" CommandParameter="{Binding .}"/>
-                                            <SwipeItem Text="Edit" BackgroundColor="Green" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=EditAdvertCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem IconImageSource="delete.png" BackgroundColor="#234972" 
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=DeleteAdvertCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem IconImageSource="edit.png" BackgroundColor="#27619b" 
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=EditAdvertCommand}" CommandParameter="{Binding .}"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid Padding="3">
-                                        <Frame CornerRadius="10" HasShadow="True">
+                                        <Frame CornerRadius="20" HasShadow="True">
                                             <StackLayout Orientation="Horizontal">
-                                                <Image Grid.RowSpan="2" Source="wearmelogo.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100"/>
+                                                <Image Grid.RowSpan="2" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="80" WidthRequest="120"/>
                                                 <StackLayout>
                                                     <Label Grid.Column="1" Text="{Binding Title}" FontSize="15" TextColor="black" FontAttributes="Bold"/>
-                                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Category}" FontSize="15" VerticalOptions="End"/>
+                                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Price}" TextColor="DarkBlue"  Style="{StaticResource ExtraInfoListStyle}"/>
+                                                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding Size}" TextColor="DarkRed" Style="{StaticResource ExtraInfoListStyle}"/>
+                                                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding Brand}" TextColor="DarkGreen" Style="{StaticResource ExtraInfoListStyle}"/>
+                                                    <Label Grid.Column="2" Grid.Row="2" Text="{Binding Category}" Style="{StaticResource ExtraInfoListStyle}"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>
