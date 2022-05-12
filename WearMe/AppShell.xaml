@@ -5,6 +5,15 @@
        Title="WearMe"
        x:Class="WearMe.AppShell">
 
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout Padding="0,0,0,100">
+                <BoxView Style="{StaticResource VerticalLineMenuStyle}"/>
+                <Image Source="wearmelogo.png"></Image>
+                <BoxView Style="{StaticResource VerticalLineMenuStyle}"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="MasterStyle" TargetType="Element">
@@ -63,10 +72,12 @@
     <FlyoutItem Title="Ubrania">
         <ShellContent Route="AdvertsListPage" ContentTemplate="{DataTemplate local:AdvertsListPage}"/>
     </FlyoutItem>
+   
     <MenuItem Text="Dodaj przedmiot" StyleClass="MenuItemLayoutStyle" Clicked="MenuAddItem_Clicked"/>
     <MenuItem Text="Strona główna" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuLeaveItem_Clicked"/>
 
     <TabBar>
         <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     </TabBar>
+    
 </Shell>

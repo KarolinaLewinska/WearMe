@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Plugin.LocalNotification;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WearMe.Models;
+using WearMe.Notifications;
 using WearMe.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WearMe.ViewModels
@@ -24,6 +27,7 @@ namespace WearMe.ViewModels
             DeleteAdvertCommand = new Command<Advert>(OnDeleteAdvert);
             Navigation = navigation;
         }
+
         public void OnAppearing()
         {
             IsBusy = true;
@@ -74,6 +78,11 @@ namespace WearMe.ViewModels
             if (wantsToDelete)
             {
                 await App.AdvertService.DeleteAdvert(advert.AdvertId);
+                Notification.createNotification("Usunięto produkt", "Produkt nie jest już widoczny dla innych", 2);
+                await App.Current.MainPage.DisplayAlert("Usunięto dane", "Pomyślnie usunięto dane o produkcie", "OK");
+
+                var duration = TimeSpan.FromSeconds(3);
+                Vibration.Vibrate(duration);
                 await ExecuteLoadAdvertCommand();
             }
         }

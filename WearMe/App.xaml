@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#191970</Color>
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -30,11 +30,6 @@
             <Style x:Key="LabelTextStyle" TargetType="Label" ApplyToDerivedTypes="True">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="Black"/>
-            </Style>
-            <Style x:Key="EntryTextStyle" TargetType="Entry" ApplyToDerivedTypes="True">
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="TextColor" Value="Gray"/>
             </Style>
             <Style x:Key="ExtraInfoListStyle" TargetType="Label" ApplyToDerivedTypes="True">
                 <Setter Property="FontSize" Value="15"/>
@@ -59,6 +54,13 @@
                 <Setter Property="HeightRequest" Value="1"/>
                 <Setter Property="Color" Value="DarkBlue"/>
             </Style>
+            <Style x:Key="VerticalLineMenuStyle" TargetType="BoxView" ApplyToDerivedTypes="True">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="Color" Value="DarkBlue"/>
+            </Style>
             <Style x:Key="DescriptionLabelStyle" TargetType="Label" ApplyToDerivedTypes="True">
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="TextColor" Value="Black"/>
@@ -70,6 +72,11 @@
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Orientation" Value="Horizontal"/>
+            </Style>
+            <Style x:Key="PickerStyle" TargetType="Picker" ApplyToDerivedTypes="True">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="Gray"/>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

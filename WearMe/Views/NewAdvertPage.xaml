@@ -3,32 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WearMe.Views.NewAdvertPage"
              xmlns:local="clr-namespace:WearMe.ViewModels"
+             xmlns:triggers="clr-namespace:WearMe.Triggers"
+             xmlns:Helpers="clr-namespace:WearMe.Converters"
              Shell.PresentationMode="Animated">
-
+    
+    <ContentPage.Resources>
+        <Style x:Key="EntryTextAndTriggerStyle" TargetType="Entry">
+            <Style.Triggers>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="#f2f8fb"/>
+                    <Setter Property="FontSize" Value="Large"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="Gray"/>
+        </Style>
+        <Style x:Key="EditorTextAndTriggerStyle" TargetType="Editor">
+            <Style.Triggers>
+                <Trigger TargetType="Editor" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="#f2f8fb"/>
+                    <Setter Property="FontSize" Value="Large"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="Gray"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.BindingContext>
         <local:NewAdvertViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="3" Padding="15">
                 <Label Text="Informacje o produkcie"  Margin="0,5,0,15" Style="{StaticResource HeaderTextStyle}"/>
                 <Label Text="Tytuł" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.Title, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Entry Text="{Binding Advert.Title, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}"/>
                 <Label Text="Opis" Style="{StaticResource LabelTextStyle}"/>
-                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges" Style="{StaticResource EntryTextStyle}"/>
+                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges" Style="{StaticResource EditorTextAndTriggerStyle}"/>
                 <StackLayout Orientation="Horizontal" Padding="30,10,90,10">
-                    <Button Text="Zrób zdjęcie" HeightRequest="40" WidthRequest="140" Command="{Binding TakePhoto}"/>
-                    <Button Text="Wybierz zdjęcie" HeightRequest="40" WidthRequest="160" Command="{Binding ChoosePhoto}"/>
+                    <Button Text="Zrób zdjęcie" HeightRequest="40" WidthRequest="140" CornerRadius="20" Command="{Binding TakePhoto}">
+                        <Button.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <triggers:ButtonFormTrigger/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Text="Wybierz zdjęcie" HeightRequest="40" WidthRequest="160" CornerRadius="20" Command="{Binding ChoosePhoto}">
+                        <Button.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <triggers:ButtonFormTrigger/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
                 </StackLayout>
-                <Image Source="{Binding MediaPath, Mode=TwoWay}" HeightRequest="100"/>
+                <StackLayout>
+                    <Grid Padding="0,-110,90,0">
+                        <Image Grid.Row="1" Grid.Column="1" Source="{Binding MediaPath}" HeightRequest="120"/>
+                        <Image Grid.Row="1" Grid.Column="2" Source="{Binding Advert.Photo}" HeightRequest="120" IsVisible="{Binding MediaPath, Converter={Helpers:NullToBoolConverter}}"/>
+                    </Grid>
+                </StackLayout>
+                
                 <Label Text="Cena" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.Price, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Keyboard="Numeric"/>
+                <Entry Text="{Binding Advert.Price, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Keyboard="Numeric">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <triggers:EntryAndButtonTrigger/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
                 <Label Text="Rozmiar" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.Size, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Entry Text="{Binding Advert.Size, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}"/>
                 <Label Text="Marka" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.Brand, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
-                <Picker SelectedItem="{Binding Advert.Category, Mode=TwoWay}" Title="Wybierz kategorię" Margin="0,20,0,10">
+                <Entry Text="{Binding Advert.Brand, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}"/>
+                <Picker SelectedItem="{Binding Advert.Category, Mode=TwoWay}" Title="Wybierz kategorię" Margin="0,20,0,10" Style="{StaticResource PickerStyle}">
                     <Picker.Items>
                         <x:String>Kurtki i płaszcze</x:String>
                         <x:String>Bluzy i swetry</x:String>
@@ -44,14 +95,14 @@
                         <x:String>Inne torebki</x:String>
                     </Picker.Items>
                 </Picker>
-                <Picker SelectedItem="{Binding Advert.Gender, Mode=TwoWay}" Title="Wybierz płeć" Margin="0,0,0,10">
+                <Picker SelectedItem="{Binding Advert.Gender, Mode=TwoWay}" Title="Wybierz płeć" Margin="0,0,0,10" Style="{StaticResource PickerStyle}">
                     <Picker.Items>
                         <x:String>Dla kobiet</x:String>
                         <x:String>Dla mężczyzn</x:String>
                         <x:String>Dla obu płci</x:String>
                     </Picker.Items>
                 </Picker>
-                <Picker SelectedItem="{Binding Advert.Condition, Mode=TwoWay}" Title="Określ stan produktu" Margin="0,0,0,20">
+                <Picker SelectedItem="{Binding Advert.Condition, Mode=TwoWay}" Title="Określ stan produktu" Margin="0,0,0,20" Style="{StaticResource PickerStyle}">
                     <Picker.Items>
                         <x:String>Nowy z metką</x:String>
                         <x:String>Nowy bez metki</x:String>
@@ -61,13 +112,19 @@
                 </Picker>
                 <Label Text="Dane kontaktowe sprzedawcy" Margin="0,5,0,25" Style="{StaticResource HeaderTextStyle}"/>
                 <Label Text="Imię i nazwisko" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.NameAndSurname, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Entry Text="{Binding Advert.NameAndSurname, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}"/>
                 <Label Text="Numer telefonu" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.PhoneNumber, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Keyboard="Numeric"/>
+                <Entry Text="{Binding Advert.PhoneNumber, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Keyboard="Telephone">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <triggers:PhoneLengthTrigger/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
                 <Label Text="Adres email" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.Email, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}"/>
+                <Entry Text="{Binding Advert.Email, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Keyboard="Email"/>
                 <Label Text="Miasto" Style="{StaticResource LabelTextStyle}"/>
-                <Entry Text="{Binding Advert.City, Mode=TwoWay}" Style="{StaticResource EntryTextStyle}" Margin="0,0,0,15"/>
+                <Entry Text="{Binding Advert.City, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Margin="0,0,0,15"/>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
                     <Button Text="Zapisz" Command="{Binding SaveAdvertCommand}" HorizontalOptions="FillAndExpand"/>

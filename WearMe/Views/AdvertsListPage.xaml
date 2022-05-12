@@ -9,7 +9,9 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="add.png" Command="{Binding AddAdvertCommand}"/>
     </ContentPage.ToolbarItems>
-    
+  
+
+
     <ContentPage.Content>
         <StackLayout>
             <RefreshView x:DataType="local:AdvertViewModel" Command="{Binding LoadAdvertsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
@@ -21,9 +23,9 @@
                                     <SwipeView.RightItems>
                                         <SwipeItems>
                                             <SwipeItem IconImageSource="delete.png" BackgroundColor="#234972" 
-                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=DeleteAdvertCommand}" CommandParameter="{Binding .}"/>
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel}}, Path=DeleteAdvertCommand}" CommandParameter="{Binding .}"/>
                                             <SwipeItem IconImageSource="edit.png" BackgroundColor="#27619b" 
-                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel }}, Path=EditAdvertCommand}" CommandParameter="{Binding .}"/>
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdvertViewModel}}, Path=EditAdvertCommand}" CommandParameter="{Binding .}"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid Padding="3">
