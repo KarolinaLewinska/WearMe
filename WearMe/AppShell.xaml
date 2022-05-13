@@ -9,7 +9,7 @@
         <DataTemplate>
             <StackLayout Padding="0,0,0,100">
                 <BoxView Style="{StaticResource VerticalLineMenuStyle}"/>
-                <Image Source="wearmelogo.png"></Image>
+                <Image Source="wearmelogo.png"/>
                 <BoxView Style="{StaticResource VerticalLineMenuStyle}"/>
             </StackLayout>
         </DataTemplate>
@@ -59,7 +59,7 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}"/>
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -77,7 +77,6 @@
     <MenuItem Text="Strona główna" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuLeaveItem_Clicked"/>
 
     <TabBar>
-        <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
     </TabBar>
-    
 </Shell>

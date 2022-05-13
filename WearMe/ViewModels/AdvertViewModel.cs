@@ -1,5 +1,4 @@
-﻿using Plugin.LocalNotification;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WearMe.Models;
@@ -78,13 +77,19 @@ namespace WearMe.ViewModels
             if (wantsToDelete)
             {
                 await App.AdvertService.DeleteAdvert(advert.AdvertId);
-                Notification.createNotification("Usunięto produkt", "Produkt nie jest już widoczny dla innych", 2);
                 await App.Current.MainPage.DisplayAlert("Usunięto dane", "Pomyślnie usunięto dane o produkcie", "OK");
 
-                var duration = TimeSpan.FromSeconds(3);
-                Vibration.Vibrate(duration);
+                Notification.createNotification("Usunięto produkt", "Produkt nie jest już widoczny dla innych", 2);
+                vibrateDevice();
+       
                 await ExecuteLoadAdvertCommand();
             }
+        }
+
+        private void vibrateDevice()
+        {
+            var duration = TimeSpan.FromSeconds(4);
+            Vibration.Vibrate(duration);
         }
     }
 }

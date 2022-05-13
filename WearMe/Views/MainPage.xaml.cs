@@ -17,7 +17,7 @@ namespace WearMe.Views
 
         async void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
-            var imageSender = (Image)sender;
+            var imageSender = (Image) sender;
             imageSender.Opacity = 0;
             await imageSender.FadeTo(1, 4000);
         }

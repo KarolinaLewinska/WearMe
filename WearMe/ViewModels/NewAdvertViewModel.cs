@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WearMe.Models;
 using WearMe.Notifications;
@@ -24,22 +25,30 @@ namespace WearMe.ViewModels
         private async void OnSaveAdvert()
         {
             var advert = Advert;
-            if (FieldsAreNotEmpty(advert))
+            if (CheckIfFieldsAreNotEmpty(advert) && ChechIfFieldsHaveProperLength(advert) && checkPriceFormat(advert.Price))
             {
                 await App.AdvertService.AddAdvert(advert);
-                await Shell.Current.GoToAsync("//AdvertsListPage");
-                Notification.createNotification(advert.Title, "Produkt jest już widoczny dla innych", 1);
                 await App.Current.MainPage.DisplayAlert("Zapisano dane", "Pomyślnie zapisano dane o produkcie: " + advert.Title, "OK");
-                var duration = TimeSpan.FromSeconds(3);
-                Vibration.Vibrate(duration);
+
+                Notification.createNotification(advert.Title, "Produkt jest już widoczny dla innych", 1);
+                vibrateDevice();
+     
+                await Shell.Current.GoToAsync("//AdvertsListPage");
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Brak danych o produkcie", "Uzupełnij wszystkie pola danymi", "OK");
-            }
-           
         }
 
+        private bool CheckIfFieldsAreNotEmpty(Advert advert)
+        {
+            if (FieldsAreNotEmpty(advert))
+            {
+                return true;
+            } 
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Brak danych o produkcie", "Uzupełnij wszystkie pola danymi", "OK");
+                return false;
+            }
+        }
         private bool FieldsAreNotEmpty(Advert advert)
         {
             return !string.IsNullOrWhiteSpace(advert.Title)
@@ -55,11 +64,48 @@ namespace WearMe.ViewModels
                 && !string.IsNullOrWhiteSpace(advert.NameAndSurname)
                 && !string.IsNullOrWhiteSpace(advert.Email)
                 && !string.IsNullOrWhiteSpace(advert.PhoneNumber)
-                //&& advert.PhoneNumber.Length >= 9
-                //opis min 20 znakow
-                //tytul max 35 znakow 
                 && !string.IsNullOrWhiteSpace(advert.City);
-        
+        }
+
+        private bool ChechIfFieldsHaveProperLength(Advert advert)
+        {
+            if (advert.Title.Length < 10 || advert.Title.Length > 50)
+            {
+                App.Current.MainPage.DisplayAlert("Za krótki tytuł", "Tytuł produktu musi posiadać od 10 do 50 znaków", "OK");
+                return false;
+            }
+            if (advert.Description.Length < 30 || advert.Description.Length > 200)
+            {
+                App.Current.MainPage.DisplayAlert("Za krótki opis", "Opis produktu musi posiadać od 30 do 200 znaków", "OK");
+                return false;
+            }
+            if (advert.PhoneNumber.Length < 9 || advert.PhoneNumber.Length > 15)
+            {
+                App.Current.MainPage.DisplayAlert("Za krótki numer", "Numer telefonu musi posiadać od 9 do 15 cyfr", "OK");
+                return false;
+            }
+            return true;
+        }
+
+        private bool checkPriceFormat(decimal price)
+        {
+            Regex priceRegex = new Regex(@"(\d+\.\d{1,2})$");
+
+            if (priceRegex.IsMatch(price.ToString()))
+            {
+                return true;
+            }
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Cena", "Nieprawidłowy format ceny", "OK");
+                return false;
+            }
+        }
+
+        private void vibrateDevice()
+        {
+            var duration = TimeSpan.FromSeconds(3);
+            Vibration.Vibrate(duration);
         }
 
         private async void OnCancel()
@@ -78,6 +124,7 @@ namespace WearMe.ViewModels
                 });
             }
         }
+
         public Command ChoosePhoto
         {
             get

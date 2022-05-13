@@ -22,7 +22,6 @@ namespace WearMe.Views
             base.OnAppearing();
             advertViewModel.OnAppearing();
         }
-
         private async void Adverts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedAdvert = e.CurrentSelection.FirstOrDefault() as Advert;

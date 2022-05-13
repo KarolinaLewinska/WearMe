@@ -29,6 +29,7 @@
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="TextColor" Value="Gray"/>
+            <Setter Property="AutoSize" Value="TextChanges"/>
         </Style>
     </ContentPage.Resources>
     
@@ -39,20 +40,20 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="3" Padding="15">
-                <Label Text="Informacje o produkcie"  Margin="0,5,0,15" Style="{StaticResource HeaderTextStyle}"/>
+                <Label Text="Informacje o produkcie" Style="{StaticResource HeaderTextStyle}" Margin="0,5,0,15"/>
                 <Label Text="Tytuł" Style="{StaticResource LabelTextStyle}"/>
                 <Entry Text="{Binding Advert.Title, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}"/>
                 <Label Text="Opis" Style="{StaticResource LabelTextStyle}"/>
-                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" AutoSize="TextChanges" Style="{StaticResource EditorTextAndTriggerStyle}"/>
+                <Editor Text="{Binding Advert.Description, Mode=TwoWay}" Style="{StaticResource EditorTextAndTriggerStyle}"/>
                 <StackLayout Orientation="Horizontal" Padding="30,10,90,10">
-                    <Button Text="Zrób zdjęcie" HeightRequest="40" WidthRequest="140" CornerRadius="20" Command="{Binding TakePhoto}">
+                    <Button Text="Zrób zdjęcie" Style="{StaticResource PhotoButtonsStyle}" WidthRequest="140" Command="{Binding TakePhoto}">
                         <Button.Triggers>
                             <EventTrigger Event="Clicked">
                                 <triggers:ButtonFormTrigger/>
                             </EventTrigger>
                         </Button.Triggers>
                     </Button>
-                    <Button Text="Wybierz zdjęcie" HeightRequest="40" WidthRequest="160" CornerRadius="20" Command="{Binding ChoosePhoto}">
+                    <Button Text="Wybierz zdjęcie" Style="{StaticResource PhotoButtonsStyle}" WidthRequest="160" Command="{Binding ChoosePhoto}">
                         <Button.Triggers>
                             <EventTrigger Event="Clicked">
                                 <triggers:ButtonFormTrigger/>
@@ -62,11 +63,11 @@
                 </StackLayout>
                 <StackLayout>
                     <Grid Padding="0,-110,90,0">
-                        <Image Grid.Row="1" Grid.Column="1" Source="{Binding MediaPath}" HeightRequest="120"/>
-                        <Image Grid.Row="1" Grid.Column="2" Source="{Binding Advert.Photo}" HeightRequest="120" IsVisible="{Binding MediaPath, Converter={Helpers:NullToBoolConverter}}"/>
+                        <Image Grid.Row="1" Grid.Column="1" Source="{Binding MediaPath}" Style="{StaticResource PhotoAddStyle}"/>
+                        <Image Grid.Row="1" Grid.Column="2" Source="{Binding Advert.Photo}" Style="{StaticResource PhotoAddStyle}" 
+                               IsVisible="{Binding MediaPath, Converter={Helpers:NullToBoolConverter}}"/>
                     </Grid>
                 </StackLayout>
-                
                 <Label Text="Cena" Style="{StaticResource LabelTextStyle}"/>
                 <Entry Text="{Binding Advert.Price, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Keyboard="Numeric">
                     <Entry.Triggers>
@@ -126,8 +127,8 @@
                 <Label Text="Miasto" Style="{StaticResource LabelTextStyle}"/>
                 <Entry Text="{Binding Advert.City, Mode=TwoWay}" Style="{StaticResource EntryTextAndTriggerStyle}" Margin="0,0,0,15"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
-                    <Button Text="Zapisz" Command="{Binding SaveAdvertCommand}" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Anuluj" Command="{Binding CancelCommand}" Style="{StaticResource AddButtonsStyle}"/>
+                    <Button Text="Zapisz" Command="{Binding SaveAdvertCommand}" Style="{StaticResource AddButtonsStyle}"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

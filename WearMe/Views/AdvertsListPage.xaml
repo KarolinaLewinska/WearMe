@@ -10,8 +10,6 @@
         <ToolbarItem Icon="add.png" Command="{Binding AddAdvertCommand}"/>
     </ContentPage.ToolbarItems>
   
-
-
     <ContentPage.Content>
         <StackLayout>
             <RefreshView x:DataType="local:AdvertViewModel" Command="{Binding LoadAdvertsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">

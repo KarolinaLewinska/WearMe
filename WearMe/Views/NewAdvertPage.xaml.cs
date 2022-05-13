@@ -10,6 +10,7 @@ namespace WearMe.Views
     {
         public Advert Advert { get; set; }
         public string PageTitle { get; set; }
+        
         public NewAdvertPage()
         {
             InitializeComponent();
@@ -30,7 +31,5 @@ namespace WearMe.Views
         {
             base.OnAppearing();
         }
-      
-       
     }
 }

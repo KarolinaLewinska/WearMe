@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:triggers="clr-namespace:WearMe.Triggers"
              x:Class="WearMe.Views.MainPage"
-             Title="Wear Me"
+             Title="WearMe"
              Shell.PresentationMode="Animated">
     
     <Grid>
@@ -12,22 +12,22 @@
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                     <Image Source="wearmelogo.png" VerticalOptions="Center" HeightRequest="200">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </ContentView>
             </StackLayout>
         </StackLayout>
         <StackLayout Grid.Row="1" Style="{StaticResource MainPageStackLayoutStyle}" Padding="20,95,30,0">
-            <Label Text="Witamy w WearMe!" FontAttributes="Bold" Padding="10,0,0,10" FontSize="20" TextColor="Black"/>
+            <Label Text="Witamy w WearMe!" Style="{StaticResource MainPageTitleStyle}"/>
         </StackLayout>
         <StackLayout Grid.Row="2">
-            <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie! Z nami odmienisz swój styl!" LineHeight="1.2" FontSize="17" Padding="50,0,10,100" VerticalTextAlignment="Center"/>
+            <Label Text="Miejscu, w którym Twoje ubrania mogą odmienić czyjeś życie! Z nami odmienisz swój styl!" Style="{StaticResource MainPageTextStyle}"/>
         </StackLayout>
         <StackLayout Grid.Row="3">
             <StackLayout Style="{StaticResource MainPageStackLayoutStyle}">
                 <ContentView VerticalOptions="FillAndExpand">
-                    <Button WidthRequest="250" VerticalOptions="Center" Text="Zaczynamy" Clicked="StartApp_Clicked">
+                    <Button Text="Zaczynamy" Clicked="StartApp_Clicked" WidthRequest="250" VerticalOptions="Center">
                         <Button.Triggers>
                             <EventTrigger Event="Clicked">
                                 <triggers:ButtonStartTrigger/>
