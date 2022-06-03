@@ -89,7 +89,7 @@ namespace WearMe.ViewModels
 
         private bool checkPriceFormat(decimal price)
         {
-            Regex priceRegex = new Regex(@"(\d+\.\d{1,2})$");
+            Regex priceRegex = new Regex(@"^[0-9]+[.,]?[0-9]{2}$");
 
             if (priceRegex.IsMatch(price.ToString()))
             {
