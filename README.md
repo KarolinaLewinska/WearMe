@@ -6,6 +6,7 @@
 - Notifications
 - Local database
 - Triggers
+- Validation
 
 ## Interfaces
 ### Main Page
