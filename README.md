@@ -8,3 +8,4 @@
 - Triggers
 
 ## Interfaces
+![Main Page](https://github.com/KarolinaLewinska/WearMe/blob/master/Screenshots/mainPage.PNG)
