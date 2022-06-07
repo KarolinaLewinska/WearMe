@@ -8,4 +8,9 @@
 - Triggers
 
 ## Interfaces
+### Main Page
 ![Main Page](https://github.com/KarolinaLewinska/WearMe/blob/master/Screenshots/mainPage.PNG)
+### Side Menu
+![Side Menu](https://github.com/KarolinaLewinska/WearMe/blob/master/Screenshots/menu.PNG)
+
+
