@@ -7,6 +7,7 @@
 - Local database
 - Triggers
 - Validation
+- Modals
 
 ## Interfaces
 ### Main Page
